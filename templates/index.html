@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pijama Pro - Home</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/course.css">
+</head>
+<body>
+{% include 'widgets/header.html' %}
+<main>
+    {% block content %}
+        {% include 'widgets/search-bar.html' %}
+        {% include 'widgets/disciplina.html' %}
+        {% include 'widgets/disciplina.html' %}
+        {% include 'widgets/disciplina.html' %}
+        {% include 'widgets/disciplina.html' %}
+    {% endblock %}
+</main>
+{% include 'widgets/footer.html' %}
+</body>
+</html>

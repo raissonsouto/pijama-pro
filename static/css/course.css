@@ -1,0 +1,40 @@
+.discipline-bar {
+  margin: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 5px;
+  min-width: 500px;
+}
+
+.discipline-info {
+  flex-grow: 1;
+}
+h2 {
+  margin-top: 0;
+}
+
+.check-button {
+  margin-left: 10px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.check-button input[type="checkbox"] {
+  display: none;
+}
+
+.check-button label {
+  background-color: #2196f3;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.check-button input[type="checkbox"]:checked + label {
+  background-color: #4caf50;
+}

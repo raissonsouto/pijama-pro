@@ -1,0 +1,42 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 16px 32px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:first-child th {
+  border-top: none;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+td:first-child {
+  font-weight: bold;
+  text-align: right;
+}
+
+td:not(:first-child) {
+  text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  table {
+    font-size: 14px;
+  }
+}
