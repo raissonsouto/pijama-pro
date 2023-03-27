@@ -1,0 +1,43 @@
+
+.search-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.search-bar div {
+  display: inline-block;
+}
+
+.search-input,
+.sort-select {
+  display: flex;
+  align-items: center;
+}
+
+.search-input label,
+.sort-select label {
+  margin-right: 10px;
+}
+
+.search-input input[type="text"],
+.sort-select select {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button[type="submit"] {
+  background-color: #2196f3;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #4caf50;
+}

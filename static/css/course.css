@@ -16,9 +16,17 @@ h2 {
   margin-top: 0;
 }
 
+.class-actions {
+  margin-right: 20px;
+}
+
+.class-actions div {
+  margin: 20px 0;
+}
+
 .check-button {
   margin-left: 10px;
-  position: absolute;
+  position: relative;
   bottom: 10px;
   right: 10px;
 }
@@ -33,8 +41,4 @@ h2 {
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.check-button input[type="checkbox"]:checked + label {
-  background-color: #4caf50;
 }
