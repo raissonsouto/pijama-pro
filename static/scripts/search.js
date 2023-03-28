@@ -1,6 +1,6 @@
 function search() {
-    let searchBarString = document.getElementById('search-bar').value;
-    let articles_list = document.getElementsByClassName('article-box');
+    let searchBarString = document.getElementById('search').value;
+    let articles_list = document.getElementsByClassName('discipline-bar');
 
     for (let i = 0; i < articles_list.length; i++) {
 
