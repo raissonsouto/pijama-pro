@@ -2,12 +2,15 @@
 <html>
 <head>
     <title>Pijama Pro - Home</title>
+    <link rel="icon" href="../static/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
     <link rel="stylesheet" type="text/css" href="../static/css/course.css">
+    <script src="../static/scripts/fetch.js"></script>
+    <script src="../static/scripts/search.js"></script>
 </head>
 <body>
 {% include 'widgets/header.html' %}
-<main>
+<main class="main">
     {% block content %}
         {% include 'widgets/search-bar.html' %}
         {% include 'widgets/disciplina.html' %}
@@ -17,6 +20,5 @@
     {% endblock %}
 </main>
 {% include 'widgets/footer.html' %}
-<script src="../static/scripts/search.js"></script>
 </body>
 </html>

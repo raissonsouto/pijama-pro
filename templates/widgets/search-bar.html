@@ -1,36 +1,36 @@
 <link rel="stylesheet" type="text/css" href="../../static/css/search-bar.css">
 <div class="search-bar">
-    <form>
+    <div>
         <div class="sort-select">
-            <select name="sort">
-                <option value="asc">A-Z</option>
-                <option value="desc">Z-A</option>
+            <select id="order" name="sort">
+                <option value="az">A-Z</option>
+                <option value="za">Z-A</option>
             </select>
         </div>
         <div class="sort-select">
-            <select name="sort">
-                <option value="asc">2022.2</option>
-                <option value="asc">2022.1</option>
-                <option value="asc">2021.2</option>
-                <option value="asc">2021.1</option>
-                <option value="asc">2020.2</option>
-                <option value="asc">2020.1</option>
+            <select id="semestre" name="sort">
+                <option value="2022.2" selected="selected">2022.2</option>
+                <option value="2022.1">2022.1</option>
+                <option value="3">2021.2</option>
+                <option value="4">2021.1</option>
+                <option value="5">2020.2</option>
+                <option value="6">2020.1</option>
             </select>
         </div>
         <div class="sort-select">
-            <select id="sort" name="sort">
-                <option value="asc">Ciência da Computacão</option>
-                <option value="desc">Arquitetura e Urbanismo</option>
-                <option value="desc">Design</option>
-                <option value="desc">Estatística</option>
-                <option value="desc">Engenharia Elétrica</option>
+            <select id="curso" name="sort">
+                <option value="ciencia-da-computacao" selected="selected">Ciência da Computacão</option>
+                <option value="2">Arquitetura e Urbanismo</option>
+                <option value="3">Design</option>
+                <option value="4">Estatística</option>
+                <option value="5">Engenharia Elétrica</option>
             </select>
         </div>
         <div class="search-input">
             <input type="text" id="search" name="search" placeholder="Pesquisar ...">
         </div>
         <div>
-            <button onclick="search()" type="submit">Pesquisar</button>
+            <button onclick="searchInPijamas()" type="submit">Pesquisar</button>
         </div>
-    </form>
+    </div>
 </div>
