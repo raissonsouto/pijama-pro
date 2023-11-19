@@ -13,14 +13,9 @@ def grade():
     return render_template("grade-semanal.html")
 
 
-@app.route("/plano-de-curso", methods=['GET'])
-def plano_de_curso():
-    return render_template("grade-semanal.html")
-
-
-@app.route("/disciplina/<name>")
-def disciplina(name):
-    return render_template("disciplina-page.html", disciplina=name)
+# @app.route("/plano-de-curso", methods=['GET'])
+# def plano_de_curso():
+#     return render_template("grade-semanal.html")
 
 
 if __name__ == "__main__":

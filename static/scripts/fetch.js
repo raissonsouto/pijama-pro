@@ -3,7 +3,6 @@ function fetchPijama() {
     let semestre = document.getElementById('semestre').value;
 
     let url = `https://raw.githubusercontent.com/raissonsouto/pijama2json/main/jsons/${curso}/${semestre}.json`;
-    console.log(url)
 
     fetch(url)
         .then(response => response.json())
@@ -21,14 +20,15 @@ function drawPijama(json) {
     });
 }
 function removeAllChildNodes(parent) {
-    while (parent.firstChild) {
-        parent.removeChild(parent.firstChild);
-    }
+    let children = parent.childNodes;
+    Array.from(children).forEach(node => {
+        if (node.nodeType === 1 && node.classList.contains('discipline-bar')) {
+            parent.removeChild(node);
+        }
+    });
 }
 
 function createDisciplineElement(disciplineData) {
-    console.log(disciplineData)
-
     const disciplineBar = document.createElement('div');
     disciplineBar.classList.add('discipline-bar');
 

@@ -1,9 +1,7 @@
-<link rel="stylesheet" type="text/css" href="../../static/css/search-bar.css">
 <div class="search-bar">
-    <div>
-        <div class="sort-select">
+    <div class="sort-select">
             <select id="order" name="sort">
-                <option value="az">A-Z</option>
+                <option value="az" selected="selected">A-Z</option>
                 <option value="za">Z-A</option>
             </select>
         </div>
@@ -11,26 +9,37 @@
             <select id="semestre" name="sort">
                 <option value="2022.2" selected="selected">2022.2</option>
                 <option value="2022.1">2022.1</option>
-                <option value="3">2021.2</option>
-                <option value="4">2021.1</option>
-                <option value="5">2020.2</option>
-                <option value="6">2020.1</option>
+                <option value="2021.2">2021.2</option>
             </select>
         </div>
         <div class="sort-select">
             <select id="curso" name="sort">
+                <option value="administracao">Administração</option>
                 <option value="ciencia-da-computacao" selected="selected">Ciência da Computacão</option>
-                <option value="2">Arquitetura e Urbanismo</option>
-                <option value="3">Design</option>
-                <option value="4">Estatística</option>
-                <option value="5">Engenharia Elétrica</option>
+                <option value="engenharia-quimica">Engenharia Química</option>
+                <option value="fisica">Física</option>
+                <option value="letras">Letras</option>
+            </select>
+        </div>
+        <div class="sort-select">
+            <select id="curso" name="sort">
+                <option value="todos" selected="selected">Todos</option>
+                <option value="1">1º</option>
+                <option value="2">2º</option>
+                <option value="3">3º</option>
+                <option value="4">4º</option>
+                <option value="5">5º</option>
+                <option value="6">6º</option>
+                <option value="7">7º</option>
+                <option value="8">8º</option>
+                <option value="9">9º</option>
+                <option value="10">10º</option>
             </select>
         </div>
         <div class="search-input">
-            <input type="text" id="search" name="search" placeholder="Pesquisar ...">
+            <input type="text" id="search" placeholder="Pesquisar ...">
         </div>
         <div>
             <button onclick="searchInPijamas()" type="submit">Pesquisar</button>
         </div>
-    </div>
 </div>

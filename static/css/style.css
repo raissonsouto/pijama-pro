@@ -42,7 +42,7 @@ nav a {
 }
 
 main {
-  max-width: 800px;
+  width: 650px;
   margin: 0 auto;
   padding: 40px;
   flex: 1;
