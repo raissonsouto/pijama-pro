@@ -13,6 +13,11 @@ def grade():
     return render_template("grade-semanal.html")
 
 
+@app.route("/sobre", methods=['GET'])
+def sobre():
+    return render_template("sobre.html")
+
+
 # @app.route("/plano-de-curso", methods=['GET'])
 # def plano_de_curso():
 #     return render_template("grade-semanal.html")
