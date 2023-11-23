@@ -12,17 +12,24 @@ a {
   text-decoration: none;
 }
 
+header h1 {
+  margin: 0;
+}
+
+h2 {
+  margin-top: 0;
+}
+
 header {
   background-color: #333;
   color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-}
-
-header h1 {
-  margin: 0;
+  padding: 20px 40px;
+  position: fixed;
+  width: calc(100% - 80px);
+  z-index: 5;
 }
 
 nav ul {
@@ -43,7 +50,7 @@ nav a {
 
 main {
   width: 650px;
-  margin: 0 auto;
+  margin: 70px auto 0 auto;
   padding: 40px;
   flex: 1;
   position: relative;

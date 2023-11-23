@@ -1,8 +1,8 @@
 function fetchPijama() {
-    let curso = document.getElementById('curso').value;
-    let semestre = document.getElementById('semestre').value;
+    const course = document.getElementById('curso').value;
+    const semester = document.getElementById('semestre').value;
 
-    let url = `https://raw.githubusercontent.com/raissonsouto/pijama2json/main/jsons/${curso}/${semestre}.json`;
+    let url = `https://raw.githubusercontent.com/raissonsouto/pijama2json/main/jsons/${course}/${semester}.json`;
 
     fetch(url)
         .then(response => response.json())
@@ -16,7 +16,9 @@ function drawPijama(json) {
     removeAllChildNodes(main);
 
     json.forEach(disciplina => {
-        main.appendChild(createDisciplineElement(disciplina));
+        main.appendChild(
+            createDisciplineElement(disciplina)
+        );
     });
 }
 function removeAllChildNodes(parent) {
@@ -29,17 +31,18 @@ function removeAllChildNodes(parent) {
 }
 
 function createDisciplineElement(disciplineData) {
+
     const disciplineBar = document.createElement('div');
     disciplineBar.classList.add('discipline-bar');
 
     const disciplineInfo = document.createElement('div');
     disciplineInfo.classList.add('discipline-info');
 
-    const h2 = document.createElement('h2');
-    h2.textContent = disciplineData.class;
+    const classNameH2 = document.createElement('h2');
+    classNameH2.textContent = disciplineData.class;
 
     const professorParagraph = document.createElement('p');
-    professorParagraph.innerHTML = `<strong>Professor:</strong> ${disciplineData.professor[0]}`;
+    professorParagraph.innerHTML = `<strong>Professor(a):</strong> ${disciplineData.professor}`;
 
     const scheduleParagraph = document.createElement('p');
     scheduleParagraph.innerHTML = `<strong>Horário:</strong> ${disciplineData.schedule}`; ////////////////////
@@ -47,23 +50,23 @@ function createDisciplineElement(disciplineData) {
     const vacanciesParagraph = document.createElement('p');
     vacanciesParagraph.innerHTML = `<strong>Vagas ofertadas:</strong> ${disciplineData.vacancies}`;
 
-    //const prerequisitesParagraph = document.createElement('p');
-    //prerequisitesParagraph.innerHTML = `<strong>Pré-requisitos:</strong> ${disciplineData.prerequisites}`;
-
     const classActions = document.createElement('div');
     classActions.classList.add('class-actions');
 
-    const checkButton1 = createCheckButton('Selecionar');
-    const checkButton2 = createCheckButton('Concluída', true);
+    const selectClassButton = createCheckButton('Selecionar');
+    const checkAsDone = createCheckButton('Concluída‎ ‎');
 
-    disciplineInfo.appendChild(h2);
+    selectClassButton.onclick = function() {
+        selectClass(disciplineData.class);
+    };
+
+    disciplineInfo.appendChild(classNameH2);
     disciplineInfo.appendChild(professorParagraph);
     disciplineInfo.appendChild(scheduleParagraph);
     disciplineInfo.appendChild(vacanciesParagraph);
-    //disciplineInfo.appendChild(prerequisitesParagraph);
 
-    classActions.appendChild(checkButton1);
-    classActions.appendChild(checkButton2);
+    classActions.appendChild(selectClassButton);
+    classActions.appendChild(checkAsDone);
 
     disciplineBar.appendChild(disciplineInfo);
     disciplineBar.appendChild(classActions);
@@ -75,16 +78,19 @@ function createCheckButton(labelText, isChecked = false) {
     const checkButtonDiv = document.createElement('div');
     checkButtonDiv.classList.add('check-button');
 
-    const input = document.createElement('input');
-    input.setAttribute('type', 'checkbox');
-    input.checked = isChecked;
-
     const label = document.createElement('label');
-    label.setAttribute('for', labelText.toLowerCase().replace(/\s/g, '-'));
     label.textContent = labelText;
 
-    checkButtonDiv.appendChild(input);
     checkButtonDiv.appendChild(label);
 
     return checkButtonDiv;
+}
+
+function createHtmlList(items) {
+  let html = "<ul>";
+  items.forEach(item => {
+    html += `<li>${item}</li>`;
+  });
+  html += "</ul>";
+  return html;
 }

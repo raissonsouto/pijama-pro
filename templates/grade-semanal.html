@@ -1,68 +1,75 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Pijama Pro - Grade Semanal</title>
+    <link rel="icon" href="../static/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
     <link rel="stylesheet" type="text/css" href="../static/css/table.css">
-  </head>
-  <body>
-    {% include 'widgets/header.html' %}
-    <main>
-        <table>
-      <thead>
+    <link rel="stylesheet" type="text/css" href="../static/css/selected-classes.css">
+    <script src="../static/scripts/select.js"></script>
+</head>
+<body>
+{% include 'widgets/header.html' %}
+<main>
+    <table>
+        <thead>
         <tr>
-          <th>Horários</th>
-          <th>Segunda</th>
-          <th>Terça</th>
-          <th>Quarta</th>
-          <th>Quinta</th>
-          <th>Sexta</th>
+            <th>Horários</th>
+            <th>Segunda</th>
+            <th>Terça</th>
+            <th>Quarta</th>
+            <th>Quinta</th>
+            <th>Sexta</th>
         </tr>
-      </thead>
-      <tbody>
+        </thead>
+        <tbody>
         <tr>
-          <td>8:00 - 10:00</td>
-          <td class="slot" id="segunda1"></td>
-          <td class="slot" id="terca1"></td>
-          <td class="slot" id="quarta1"></td>
-          <td class="slot" id="quinta1"></td>
-          <td class="slot" id="sexta1"></td>
-        </tr>
-        <tr>
-          <td>10:00 - 12:00</td>
-          <td class="slot" id="segunda2"></td>
-          <td class="slot" id="terca2"></td>
-          <td class="slot" id="quarta2"></td>
-          <td class="slot" id="quinta2"></td>
-          <td class="slot" id="sexta2"></td>
+            <td>8:00 - 10:00</td>
+            <td class="slot" id="segunda1"></td>
+            <td class="slot" id="terca1"></td>
+            <td class="slot" id="quarta1"></td>
+            <td class="slot" id="quinta1"></td>
+            <td class="slot" id="sexta1"></td>
         </tr>
         <tr>
-          <td>12:00 - 14:00</td>
-          <td class="slot" id="segunda3"></td>
-          <td class="slot" id="terca3"></td>
-          <td class="slot" id="quarta3"></td>
-          <td class="slot" id="quinta3"></td>
-          <td class="slot" id="sexta3"></td>
+            <td>10:00 - 12:00</td>
+            <td class="slot" id="segunda2"></td>
+            <td class="slot" id="terca2"></td>
+            <td class="slot" id="quarta2"></td>
+            <td class="slot" id="quinta2"></td>
+            <td class="slot" id="sexta2"></td>
         </tr>
         <tr>
-          <td>14:00 - 16:00</td>
-          <td class="slot" id="segunda4"></td>
-          <td class="slot" id="terca4"></td>
-          <td class="slot" id="quarta4"></td>
-          <td class="slot" id="quinta4"></td>
-          <td class="slot" id="sexta4"></td>
+            <td>12:00 - 14:00</td>
+            <td class="slot" id="segunda3"></td>
+            <td class="slot" id="terca3"></td>
+            <td class="slot" id="quarta3"></td>
+            <td class="slot" id="quinta3"></td>
+            <td class="slot" id="sexta3"></td>
         </tr>
         <tr>
-          <td>16:00 - 18:00</td>
-          <td class="slot" id="segunda5"></td>
-          <td class="slot" id="terca5"></td>
-          <td class="slot" id="quarta5"></td>
-          <td class="slot" id="quinta5"></td>
-          <td class="slot" id="sexta5"></td>
+            <td>14:00 - 16:00</td>
+            <td class="slot" id="segunda4"></td>
+            <td class="slot" id="terca4"></td>
+            <td class="slot" id="quarta4"></td>
+            <td class="slot" id="quinta4"></td>
+            <td class="slot" id="sexta4"></td>
         </tr>
-      </tbody>
+        <tr>
+            <td>16:00 - 18:00</td>
+            <td class="slot" id="segunda5"></td>
+            <td class="slot" id="terca5"></td>
+            <td class="slot" id="quarta5"></td>
+            <td class="slot" id="quinta5"></td>
+            <td class="slot" id="sexta5"></td>
+        </tr>
+        </tbody>
     </table>
-    </main>
-    {% include 'widgets/footer.html' %}
-  </body>
+</main>
+{% include 'widgets/selected-classes.html' %}
+{% include 'widgets/footer.html' %}
+</body>
+<script>
+    loadSelectedClasses();
+</script>
 </html>
