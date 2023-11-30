@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 
+
 app = Flask(__name__)
 
 
@@ -18,10 +19,5 @@ def sobre():
     return render_template("sobre.html")
 
 
-# @app.route("/plano-de-curso", methods=['GET'])
-# def plano_de_curso():
-#     return render_template("grade-semanal.html")
-
-
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run('0.0.0.0', debug=False)

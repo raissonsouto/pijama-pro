@@ -1,60 +1,37 @@
-function selectClass(className) {
-    if (!addClassToLocalStorage(className)) {
+function selectClass(classData) {
+    if (!addClassToLocalStorage(classData)) {
         return;
     }
-    let selectedClassesList = document.getElementById("selected-classes-box");
-    selectedClassesList.style.display = 'block';
 
-    const selectedElement = drawSelectedClass(className);
-    selectedClassesList.appendChild(selectedElement);
+    SELECTED_CLASSES_WIDGET.style.display = 'block';
+
+    let classDataObj = JSON.parse(classData);
+    drawSelectedClass(classDataObj.class);
 }
 
-function addClassToLocalStorage(className) {
-    let currentSelected = localStorage.getItem("selected-classes");
-    let classesArray = currentSelected ? currentSelected.split('#') : [];
+function unselectClass(closeButton) {
+    let classElement = closeButton.parentNode;
 
-    if (classesArray.includes(className)) {
-        return false;
+    deleteClassFromLocalStorage(classElement.textContent.slice(0, -1));
+    classElement.remove();
+
+    if (SELECTED_CLASSES_WIDGET.childElementCount === 1) {
+        SELECTED_CLASSES_WIDGET.style.display = 'none';
     }
-
-    classesArray.push(className);
-    classesArray.sort();
-
-    let updatedSelectedClasses = classesArray.join('#');
-
-    localStorage.setItem("selected-classes", updatedSelectedClasses);
-
-    return true;
-}
-
-function deleteClassFromLocalStorage(className) {
-    let currentSelected = localStorage.getItem("selected-classes");
-    let classesArray = currentSelected ? currentSelected.split('#') : [];
-
-    const index = classesArray.indexOf(className);
-
-    if (index !== -1) {
-        classesArray.splice(index, 1);
-        let updatedSelectedClasses = classesArray.join('#');
-        localStorage.setItem("selected-classes", updatedSelectedClasses);
-        return true;
-    }
-
-    return false;
 }
 
 function loadSelectedClasses() {
+
     const currentSelected = localStorage.getItem("selected-classes");
-    const classesArray = currentSelected ? currentSelected.split('#') : [];
+    const classesArray = currentSelected ? currentSelected.split(SPLITTER) : [];
 
     if (classesArray.length > 0) {
-        let selectedClassesList = document.getElementById("selected-classes-box");
-        selectedClassesList.style.display = 'block';
+        SELECTED_CLASSES_WIDGET.style.display = 'block';
     }
 
-    classesArray.forEach(className => {
-        const element = drawSelectedClass(className);
-        selectedClassesList.appendChild(element);
+    classesArray.forEach(classData => {
+        let classDataObj = JSON.parse(classData);
+        drawSelectedClass(classDataObj.class);
     });
 }
 
@@ -75,22 +52,5 @@ function drawSelectedClass(className) {
     div.appendChild(span);
     div.appendChild(button);
 
-    return div;
-}
-
-function unselectClass(closeButton) {
-    let classElement = closeButton.parentNode;
-
-    deleteClassFromLocalStorage(classElement.textContent.slice(0, -1));
-    classElement.remove();
-
-    let selectedClassesList = document.getElementById("selected-classes-box");
-
-    if (selectedClassesList.childElementCount === 1) {
-        selectedClassesList.style.display = 'none';
-    }
-}
-
-function loadIntoTable() {
-
+    SELECTED_CLASSES_WIDGET.appendChild(div);
 }

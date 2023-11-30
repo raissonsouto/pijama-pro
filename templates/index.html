@@ -7,9 +7,6 @@
     <link rel="stylesheet" type="text/css" href="../static/css/search-bar.css">
     <link rel="stylesheet" type="text/css" href="../static/css/course.css">
     <link rel="stylesheet" type="text/css" href="../static/css/selected-classes.css">
-    <script src="../static/scripts/fetch.js"></script>
-    <script src="../static/scripts/search.js"></script>
-    <script src="../static/scripts/select.js"></script>
 </head>
 <body>
 {% include 'widgets/header.html' %}
@@ -18,9 +15,12 @@
 </main>
 {% include 'widgets/selected-classes.html' %}
 {% include 'widgets/footer.html' %}
-<script src="../static/scripts/init.js"></script>
+<script src="../static/scripts/common.js"></script>
+<script src="../static/scripts/index-var.js"></script>
+<script src="../static/scripts/fetch.js"></script>
+<script src="../static/scripts/local-storage.js"></script>
+<script src="../static/scripts/select.js"></script>
+<script src="../static/scripts/search.js"></script>
+<script src="../static/scripts/eventlisteners.js"></script>
 </body>
-<script>
-    loadSelectedClasses();
-</script>
 </html>

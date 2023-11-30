@@ -1,6 +1,6 @@
 function fetchPijama() {
-    const course = document.getElementById('curso').value;
-    const semester = document.getElementById('semestre').value;
+    let course = localStorage.getItem('currentCourse');
+    let semester = localStorage.getItem('currentSemester');
 
     let url = `https://raw.githubusercontent.com/raissonsouto/pijama2json/main/jsons/${course}/${semester}.json`;
 
@@ -11,18 +11,17 @@ function fetchPijama() {
 }
 
 function drawPijama(json) {
-    let main = document.getElementsByClassName('main')[0];
-
-    removeAllChildNodes(main);
+    removeAllChildNodes(MAIN_DIV);
 
     json.forEach(disciplina => {
-        main.appendChild(
+        MAIN_DIV.appendChild(
             createDisciplineElement(disciplina)
         );
     });
 }
 function removeAllChildNodes(parent) {
     let children = parent.childNodes;
+
     Array.from(children).forEach(node => {
         if (node.nodeType === 1 && node.classList.contains('discipline-bar')) {
             parent.removeChild(node);
@@ -45,7 +44,7 @@ function createDisciplineElement(disciplineData) {
     professorParagraph.innerHTML = `<strong>Professor(a):</strong> ${disciplineData.professor}`;
 
     const scheduleParagraph = document.createElement('p');
-    scheduleParagraph.innerHTML = `<strong>Horário:</strong> ${disciplineData.schedule}`; ////////////////////
+    scheduleParagraph.innerHTML = `<strong>Horário:</strong> ${disciplineData.schedule}`;
 
     const vacanciesParagraph = document.createElement('p');
     vacanciesParagraph.innerHTML = `<strong>Vagas ofertadas:</strong> ${disciplineData.vacancies}`;
@@ -57,7 +56,7 @@ function createDisciplineElement(disciplineData) {
     const checkAsDone = createCheckButton('Concluída‎ ‎');
 
     selectClassButton.onclick = function() {
-        selectClass(disciplineData.class);
+        selectClass(JSON.stringify(disciplineData));
     };
 
     disciplineInfo.appendChild(classNameH2);
@@ -82,15 +81,5 @@ function createCheckButton(labelText, isChecked = false) {
     label.textContent = labelText;
 
     checkButtonDiv.appendChild(label);
-
     return checkButtonDiv;
-}
-
-function createHtmlList(items) {
-  let html = "<ul>";
-  items.forEach(item => {
-    html += `<li>${item}</li>`;
-  });
-  html += "</ul>";
-  return html;
 }
