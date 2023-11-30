@@ -6,7 +6,7 @@ function selectClass(classData) {
     SELECTED_CLASSES_WIDGET.style.display = 'block';
 
     let classDataObj = JSON.parse(classData);
-    drawSelectedClass(classDataObj.class);
+    drawSelectedClass(classDataObj.name);
 }
 
 function unselectClass(closeButton) {
@@ -31,7 +31,7 @@ function loadSelectedClasses() {
 
     classesArray.forEach(classData => {
         let classDataObj = JSON.parse(classData);
-        drawSelectedClass(classDataObj.class);
+        drawSelectedClass(classDataObj.name);
     });
 }
 

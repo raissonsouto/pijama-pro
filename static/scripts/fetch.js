@@ -38,7 +38,7 @@ function createDisciplineElement(disciplineData) {
     disciplineInfo.classList.add('discipline-info');
 
     const classNameH2 = document.createElement('h2');
-    classNameH2.textContent = disciplineData.class;
+    classNameH2.textContent = disciplineData.name;
 
     const professorParagraph = document.createElement('p');
     professorParagraph.innerHTML = `<strong>Professor(a):</strong> ${disciplineData.professor}`;

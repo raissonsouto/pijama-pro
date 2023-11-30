@@ -46,14 +46,16 @@ function deleteClassFromLocalStorage(className) {
     for (let classData of classesArray) {
         let classDataObj = JSON.parse(classData);
 
-        if (className === classDataObj.class) {
+        if (className === classDataObj.name) {
             break;
         }
 
         index++;
     }
 
-    removeFromTable(classesArray[index]);
+    if (window.location.pathname !== "/") {
+        removeFromTable(classesArray[index]);
+    }
 
     if (index !== -1) {
         classesArray.splice(index, 1);
