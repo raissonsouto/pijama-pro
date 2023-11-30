@@ -12,7 +12,7 @@ function insertIntoTable(classData) {
         let hour = schedule[1].substring(0,2);
         let cellId = day + hour;
 
-        document.getElementById(cellId).innerHTML = classJson.class;
+        document.getElementById(cellId).innerHTML = classJson.name;
     });
 }
 
