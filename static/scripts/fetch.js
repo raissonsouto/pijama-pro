@@ -7,7 +7,7 @@ function fetchPijama() {
     fetch(url)
         .then(response => response.json())
         .then(data => drawPijama(data))
-        .catch(error => console.error(error));
+        .catch(error => alert("Não existe pijama nesse semestre para este curso"));
 }
 
 function drawPijama(json) {

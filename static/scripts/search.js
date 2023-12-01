@@ -26,19 +26,20 @@ function reorder() {
 
     if (order !== localStorage.getItem('currentOrder')) {
 
-        const container = document.getElementsByClassName('main')[0];
-        const divs = Array.from(container.children);
+        const divs = Array.from(MAIN_DIV.children);
 
         const firstDiv = divs.shift();
         const reversedDivs = divs.reverse();
 
-        while (container.firstChild) {
-            container.removeChild(container.firstChild);
+        while (MAIN_DIV.firstChild) {
+            MAIN_DIV.removeChild(MAIN_DIV.firstChild);
         }
 
-        container.appendChild(firstDiv);
+        MAIN_DIV.appendChild(firstDiv);
         reversedDivs.forEach(div => {
-            container.appendChild(div);
+            MAIN_DIV.appendChild(div);
         });
+
+        localStorage.setItem('currentOrder', order);
     }
 }

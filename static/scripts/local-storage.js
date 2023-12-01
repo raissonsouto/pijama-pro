@@ -2,6 +2,7 @@ function loadPreferences() {
 
     let currentCourse = localStorage.getItem('currentCourse');
     let currentSemester = localStorage.getItem('currentSemester');
+    localStorage.setItem('currentOrder', "az");
 
     if (currentCourse === null) {
         currentCourse = COURSE_INPUT.value;
