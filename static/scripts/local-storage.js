@@ -69,3 +69,33 @@ function deleteClassFromLocalStorage(className) {
 
     return false;
 }
+
+function addOrRemoveConcludedClasses(disciplineData){
+    let concludedClasses = localStorage.getItem('concludedClasses');
+    let classesArray = concludedClasses ? concludedClasses.split(SPLITTER) : [];
+
+    if (classesArray.includes(disciplineData)) {
+        removeConcludedClasses(disciplineData, classesArray);
+    } else{
+        addConcludedClasses(disciplineData, classesArray);
+    }
+}
+function addConcludedClasses(disciplineData, classesArray) {
+    classesArray.push(disciplineData);
+
+    let updatedConcludedClasses = classesArray.join('#-#');
+    localStorage.setItem("concludedClasses", updatedConcludedClasses);
+
+    return true;
+
+}
+
+function removeConcludedClasses(disciplineData, classesArray) {
+    delete classesArray[classesArray.indexOf(disciplineData)]
+    console.log(classesArray)
+    let updatedConcludedClasses = classesArray.join('#-#');
+    localStorage.setItem("concludedClasses", updatedConcludedClasses);
+
+    return true;
+
+}

@@ -11,13 +11,24 @@ function fetchPijama() {
 }
 
 function drawPijama(json) {
+    let concludedClasses = localStorage.getItem('concludedClasses')
+    let concludedClassesArray = concludedClasses ? concludedClasses.split(SPLITTER) : []
+
     removeAllChildNodes(MAIN_DIV);
 
     json.forEach(disciplina => {
+        let createdDiscipline = createDisciplineElement(disciplina)
+
         MAIN_DIV.appendChild(
-            createDisciplineElement(disciplina)
+            createdDiscipline
         );
+        
+        if (concludedClassesArray.includes(JSON.stringify(disciplina))){
+            createdDiscipline.classList.add('concluded-class');
+        }
     });
+
+    showConcludedClasses();
 }
 function removeAllChildNodes(parent) {
     let children = parent.childNodes;
@@ -58,6 +69,10 @@ function createDisciplineElement(disciplineData) {
     selectClassButton.onclick = function() {
         selectClass(JSON.stringify(disciplineData));
     };
+
+    checkAsDone.onclick = function() {
+        checkClassAsDone(JSON.stringify(disciplineData), disciplineBar);
+    } 
 
     disciplineInfo.appendChild(classNameH2);
     disciplineInfo.appendChild(professorParagraph);
