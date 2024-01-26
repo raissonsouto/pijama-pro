@@ -70,30 +70,31 @@ function deleteClassFromLocalStorage(className) {
     return false;
 }
 
-function addOrRemoveConcludedClasses(disciplineData){
+function addOrRemoveConcludedClasses(disciplineData, disciplineBar){
     let concludedClasses = localStorage.getItem('concludedClasses');
     let classesArray = concludedClasses ? concludedClasses.split(SPLITTER) : [];
 
     if (classesArray.includes(disciplineData)) {
-        removeConcludedClasses(disciplineData, classesArray);
+        removeConcludedClasses(disciplineData, classesArray, disciplineBar);
     } else{
-        addConcludedClasses(disciplineData, classesArray);
+        addConcludedClasses(disciplineData, classesArray, disciplineBar);
     }
+    showOrHideClasses();    
 }
-function addConcludedClasses(disciplineData, classesArray) {
+
+function addConcludedClasses(disciplineData, classesArray, disciplineBar) {
     classesArray.push(disciplineData);
 
     let updatedConcludedClasses = classesArray.join('#-#');
+    disciplineBar.classList = 'discipline-bar concluded-class';
     localStorage.setItem("concludedClasses", updatedConcludedClasses);
-
     return true;
 
 }
-
-function removeConcludedClasses(disciplineData, classesArray) {
+function removeConcludedClasses(disciplineData, classesArray, disciplineBar) {
     delete classesArray[classesArray.indexOf(disciplineData)]
-    console.log(classesArray)
-    let updatedConcludedClasses = classesArray.join('#-#');
+    disciplineBar.classList = 'discipline-bar';
+    let updatedConcludedClasses = classesArray.filter(el => el !== '').join('#-#');
     localStorage.setItem("concludedClasses", updatedConcludedClasses);
 
     return true;

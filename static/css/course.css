@@ -1,5 +1,5 @@
 .discipline-bar {
-  margin: 20px 0;
+  margin: 10px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,10 +11,11 @@
 
 .discipline-info {
   flex-grow: 1;
+  font-size: 13px;
 }
 
 .class-actions {
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .class-actions div {

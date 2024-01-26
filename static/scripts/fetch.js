@@ -13,7 +13,6 @@ function fetchPijama() {
 function drawPijama(json) {
     let concludedClasses = localStorage.getItem('concludedClasses')
     let concludedClassesArray = concludedClasses ? concludedClasses.split(SPLITTER) : []
-
     removeAllChildNodes(MAIN_DIV);
 
     json.forEach(disciplina => {
@@ -27,12 +26,32 @@ function drawPijama(json) {
             createdDiscipline.classList.add('concluded-class');
         }
     });
-
-    showConcludedClasses();
+    showOrHideClasses();
 }
-function removeAllChildNodes(parent) {
-    let children = parent.childNodes;
 
+function showOrHideClasses(){
+    let classes = document.getElementsByClassName('discipline-bar'); 
+    for(let aula of classes){
+        for(let c of aula.classList){
+            if(c=='concluded-class'){
+                if(!SHOW_CONCLUDED.checked){
+                aula.style.display = 'none';
+                break;
+                }else{
+                    aula.style.display = '';
+                }
+                aula.children[1].children[1].getElementsByTagName('label')[0].innerText = 'Remover das Concluídas'; 
+                aula.children[1].children[0].style.display = 'none';
+            }else{
+                aula.children[1].children[1].getElementsByTagName('label')[0].innerText = 'Adicionar às Concluídas'; 
+                aula.children[1].children[0].style.display = '';
+            }
+        }
+    }
+}
+
+function removeAllChildNodes(parent) { 
+    let children = parent.childNodes;
     Array.from(children).forEach(node => {
         if (node.nodeType === 1 && node.classList.contains('discipline-bar')) {
             parent.removeChild(node);
@@ -41,7 +60,6 @@ function removeAllChildNodes(parent) {
 }
 
 function createDisciplineElement(disciplineData) {
-
     const disciplineBar = document.createElement('div');
     disciplineBar.classList.add('discipline-bar');
 
@@ -64,7 +82,8 @@ function createDisciplineElement(disciplineData) {
     classActions.classList.add('class-actions');
 
     const selectClassButton = createCheckButton('Selecionar');
-    const checkAsDone = createCheckButton('Concluída‎ ‎');
+    const checkAsDone = createCheckButton('Adicionar às Concluídas‎ ‎');
+    checkAsDone.classList.add('concluded-button');
 
     selectClassButton.onclick = function() {
         selectClass(JSON.stringify(disciplineData));
