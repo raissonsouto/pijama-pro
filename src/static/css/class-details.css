@@ -1,0 +1,37 @@
+.discipline-bar {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--secondary-white);
+  padding: 10px;
+  border-radius: var(--border-radius);
+  min-width: 500px;
+}
+
+.discipline-info {
+  flex-grow: 1;
+  font-size: 13px;
+}
+
+.class-actions {
+  margin-right: 20px;
+  width: 100px;
+}
+
+.check-button {
+  margin: 20px 0;
+  position: relative;
+  top: 50%;
+}
+
+.check-button label {
+  background-color: var(--primary-color);
+  color: var(--primary-white);
+  border-radius: var(--border-radius);
+  padding: 5px 10px;
+  cursor: pointer;
+  display: block;
+  width: 85px;
+  text-align: center;
+}

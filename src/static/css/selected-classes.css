@@ -1,0 +1,39 @@
+#selected-classes-box {
+    position: fixed;
+    top: calc(50% + 40px);
+    left: calc(50% - 500px);
+    min-height: 80px;
+    max-height: 300px;
+    width: 200px;
+    background-color: var(--secondary-white);
+    border-radius: var(--border-radius);
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    display: none;
+}
+
+#selected-classes-box h2 {
+    font-size: 12pt;
+}
+
+.selected-class {
+    margin: 10px 0;
+    padding: 5px;
+    position: relative;
+}
+
+.selected-class:hover {
+    background-color: #e5e5e5;
+    border-radius: var(--border-radius);
+}
+
+.selected-class button {
+    background-color: #0000;
+    position: absolute;
+    right: 5px;
+    top: 3px;
+    border: none;
+    transform: rotate(45deg);
+    font-size: 14pt;
+    cursor: pointer;
+}
