@@ -1,6 +1,5 @@
 function fetchPijamaMetadata() {
     const url = `https://raw.githubusercontent.com/raissonsouto/pijama2json/main/jsons/metadata.json`;
-
     fetch(url)
         .then(response => response.json())
         .then(data => setCoursesAtSearchBar(data))
@@ -8,18 +7,15 @@ function fetchPijamaMetadata() {
 }
 
 function setCoursesAtSearchBar(json) {
-
+    console.log(json);
     let courseDropDown = document.getElementById("course-dropdown");
+    const objJSON = JSON.parse(json)
 
-    json.forEach(course => {
+    objJSON.forEach(course => {
         var optionElement = document.createElement("option");
         
-        optionElement.value = "administracao";
-        optionElement.textContent = "Administração";
-
-        if (optionElement.value ===) {
-            optionElement.selected = true;
-        }
+        optionElement.value = course["name"];
+        optionElement.textContent = course["name"];
 
         courseDropDown.appendChild(optionElement);
     });
