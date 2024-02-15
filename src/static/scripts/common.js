@@ -1,2 +1,2 @@
-let SELECTED_CLASSES_WIDGET = document.getElementById("selected-classes-box");
+let SELECTED_SUBJECTS_WIDGET = document.getElementById("selected-subjects-box");
 let SPLITTER = "#-#"

@@ -1,56 +1,56 @@
-function selectClass(classData) {
-    if (!addClassToLocalStorage(classData)) {
+function selectSubject(subjectData) {
+    if (!addSubjectToLocalStorage(subjectData)) {
         return;
     }
 
-    SELECTED_CLASSES_WIDGET.style.display = 'block';
+    SELECTED_SUBJECTS_WIDGET.style.display = 'block';
 
-    let classDataObj = JSON.parse(classData);
-    drawSelectedClass(classDataObj.name);
+    let subjectDataObj = JSON.parse(subjectData);
+    drawSelectedSubject(subjectDataObj.name);
 }
 
-function unselectClass(closeButton) {
-    let classElement = closeButton.parentNode;
+function unselectSubject(closeButton) {
+    let subjectElement = closeButton.parentNode;
 
-    deleteClassFromLocalStorage(classElement.textContent.slice(0, -1));
-    classElement.remove();
+    deleteSubjectFromLocalStorage(subjectElement.textContent.slice(0, -1));
+    subjectElement.remove();
 
-    if (SELECTED_CLASSES_WIDGET.childElementCount === 1) {
-        SELECTED_CLASSES_WIDGET.style.display = 'none';
+    if (SELECTED_SUBJECTS_WIDGET.childElementCount === 1) {
+        SELECTED_SUBJECTS_WIDGET.style.display = 'none';
     }
 }
 
-function loadSelectedClasses() {
+function loadSelectedSubjects() {
 
-    const currentSelected = localStorage.getItem("selected-classes");
-    const classesArray = currentSelected ? currentSelected.split(SPLITTER) : [];
+    const currentSelected = localStorage.getItem("selectedSubjects");
+    const subjectsArray = currentSelected ? currentSelected.split(SPLITTER) : [];
 
-    if (classesArray.length > 0) {
-        SELECTED_CLASSES_WIDGET.style.display = 'block';
+    if (subjectsArray.length > 0) {
+        SELECTED_SUBJECTS_WIDGET.style.display = 'block';
     }
 
-    classesArray.forEach(classData => {
-        let classDataObj = JSON.parse(classData);
-        drawSelectedClass(classDataObj.name);
+    subjectsArray.forEach(subjectData => {
+        let subjectDataObj = JSON.parse(subjectData);
+        drawSelectedSubject(subjectDataObj.name);
     });
 }
 
-function drawSelectedClass(className) {
+function drawSelectedSubject(subjectName) {
     const div = document.createElement('div');
-    div.classList.add('selected-class');
+    div.classList.add('selected-subject');
 
     const span = document.createElement('span');
-    span.textContent = className;
+    span.textContent = subjectName;
 
     const button = document.createElement('button');
     button.classList.add('unselect');
     button.textContent = '+';
     button.onclick = function () {
-        unselectClass(this);
+        unselectSubject(this);
     };
 
     div.appendChild(span);
     div.appendChild(button);
 
-    SELECTED_CLASSES_WIDGET.appendChild(div);
+    SELECTED_SUBJECTS_WIDGET.appendChild(div);
 }

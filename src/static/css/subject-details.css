@@ -1,4 +1,4 @@
-.discipline-bar {
+.subject-bar {
   margin: 10px 0;
   display: flex;
   justify-content: space-between;
@@ -9,12 +9,12 @@
   min-width: 500px;
 }
 
-.discipline-info {
+.subject-info {
   flex-grow: 1;
   font-size: 13px;
 }
 
-.class-actions {
+.subject-actions {
   margin-right: 20px;
   width: 100px;
 }

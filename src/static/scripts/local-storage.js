@@ -21,33 +21,33 @@ function loadPreferences() {
     }
 }
 
-function addClassToLocalStorage(classData) {
-    let currentSelected = localStorage.getItem("selected-classes");
-    let classesArray = currentSelected ? currentSelected.split(SPLITTER) : [];
+function addSubjectToLocalStorage(subjectData) {
+    let currentSelected = localStorage.getItem("selectedSubjects");
+    let subjectsArray = currentSelected ? currentSelected.split(SPLITTER) : [];
 
-    if (classesArray.includes(classData)) {
+    if (subjectsArray.includes(subjectData)) {
         return false;
     }
 
-    classesArray.push(classData);
-    // classesArray.sort();
+    subjectsArray.push(subjectData);
+    // subjectsArray.sort();
 
-    let updatedSelectedClasses = classesArray.join('#-#');
-    localStorage.setItem("selected-classes", updatedSelectedClasses);
+    let updatedSelectedSubjects = subjectsArray.join('#-#');
+    localStorage.setItem("selectedSubjects", updatedSelectedSubjects);
 
     return true;
 }
 
-function deleteClassFromLocalStorage(className) {
-    let currentSelected = localStorage.getItem("selected-classes");
-    let classesArray = currentSelected ? currentSelected.split(SPLITTER) : [];
+function deleteSubjectFromLocalStorage(subjectName) {
+    let currentSelected = localStorage.getItem("selectedSubjects");
+    let subjectsArray = currentSelected ? currentSelected.split(SPLITTER) : [];
 
     let index = 0;
 
-    for (let classData of classesArray) {
-        let classDataObj = JSON.parse(classData);
+    for (let subjectData of subjectsArray) {
+        let subjectDataObj = JSON.parse(subjectData);
 
-        if (className === classDataObj.name) {
+        if (subjectName === subjectDataObj.name) {
             break;
         }
 
@@ -55,14 +55,14 @@ function deleteClassFromLocalStorage(className) {
     }
 
     if (window.location.pathname !== "/") {
-        removeFromTable(classesArray[index]);
+        removeFromTable(subjectsArray[index]);
     }
 
     if (index !== -1) {
-        classesArray.splice(index, 1);
+        subjectsArray.splice(index, 1);
 
-        let updatedSelectedClasses = classesArray.join(SPLITTER);
-        localStorage.setItem("selected-classes", updatedSelectedClasses);
+        let updatedSelectedSubjects = subjectsArray.join(SPLITTER);
+        localStorage.setItem("selectedSubjects", updatedSelectedSubjects);
 
         return true;
     }
@@ -70,32 +70,32 @@ function deleteClassFromLocalStorage(className) {
     return false;
 }
 
-function addOrRemoveConcludedClasses(disciplineData, disciplineBar){
-    let concludedClasses = localStorage.getItem('concludedClasses');
-    let classesArray = concludedClasses ? concludedClasses.split(SPLITTER) : [];
+function addOrRemoveConcludedSubjects(subjectData, subjectBar){
+    let concludedSubjects = localStorage.getItem('concludedSubjects');
+    let subjectsArray = concludedSubjects ? concludedSubjects.split(SPLITTER) : [];
 
-    if (classesArray.includes(disciplineData)) {
-        removeConcludedClasses(disciplineData, classesArray, disciplineBar);
+    if (subjectsArray.includes(subjectData)) {
+        removeConcludedSubjects(subjectData, subjectsArray, subjectBar);
     } else{
-        addConcludedClasses(disciplineData, classesArray, disciplineBar);
+        addConcludedSubjects(subjectData, subjectsArray, subjectBar);
     }
-    showOrHideClasses();    
+    showOrHideSubjects();    
 }
 
-function addConcludedClasses(disciplineData, classesArray, disciplineBar) {
-    classesArray.push(disciplineData);
+function addConcludedSubjects(subjectData, subjectsArray, subjectBar) {
+    subjectsArray.push(subjectData);
 
-    let updatedConcludedClasses = classesArray.join('#-#');
-    disciplineBar.classList = 'discipline-bar concluded-class';
-    localStorage.setItem("concludedClasses", updatedConcludedClasses);
+    let updatedConcludedSubjects = subjectsArray.join('#-#');
+    subjectBar.classList = 'subject-bar concluded-subject';
+    localStorage.setItem("concludedSubjects", updatedConcludedSubjects);
     return true;
 
 }
-function removeConcludedClasses(disciplineData, classesArray, disciplineBar) {
-    delete classesArray[classesArray.indexOf(disciplineData)]
-    disciplineBar.classList = 'discipline-bar';
-    let updatedConcludedClasses = classesArray.filter(el => el !== '').join('#-#');
-    localStorage.setItem("concludedClasses", updatedConcludedClasses);
+function removeConcludedSubjects(subjectData, subjectsArray, subjectBar) {
+    delete subjectsArray[subjectsArray.indexOf(subjectData)]
+    subjectBar.classList = 'subject-bar';
+    let updatedConcludedSubjects = subjectsArray.filter(el => el !== '').join('#-#');
+    localStorage.setItem("concludedSubjects", updatedConcludedSubjects);
 
     return true;
 

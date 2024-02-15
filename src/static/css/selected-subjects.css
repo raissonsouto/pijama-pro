@@ -1,4 +1,4 @@
-#selected-classes-box {
+#selected-subjects-box {
     position: fixed;
     top: calc(50% + 40px);
     left: calc(50% - 500px);
@@ -12,22 +12,22 @@
     display: none;
 }
 
-#selected-classes-box h2 {
+#selected-subjects-box h2 {
     font-size: 12pt;
 }
 
-.selected-class {
+.selected-subject {
     margin: 10px 0;
     padding: 5px;
     position: relative;
 }
 
-.selected-class:hover {
+.selected-subject:hover {
     background-color: #e5e5e5;
     border-radius: var(--border-radius);
 }
 
-.selected-class button {
+.selected-subject button {
     background-color: #0000;
     position: absolute;
     right: 5px;

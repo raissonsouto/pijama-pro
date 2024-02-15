@@ -5,16 +5,15 @@
     <link rel="icon" href="../static/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
     <link rel="stylesheet" type="text/css" href="../static/css/search-bar.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/class-details.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/selected-classes.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/concluded-classes.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/subject-details.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/selected-subjects.css">
 </head>
 <body>
 {% include 'widgets/header.html' %}
 <main class="main">
     {% include 'widgets/search-bar.html' %}
 </main>
-{% include 'widgets/selected-classes.html' %}
+{% include 'widgets/selected-subjects.html' %}
 {% include 'widgets/footer.html' %}
 <script src="../static/scripts/common.js"></script>
 <script src="../static/scripts/index-var.js"></script>
@@ -24,5 +23,6 @@
 <script src="../static/scripts/search.js"></script>
 <script src="../static/scripts/eventlisteners.js"></script>
 <script src="../static/scripts/checkAsDone.js"></script>
+<script src="../static/scripts/searchBar.js"></script>
 </body>
 </html>

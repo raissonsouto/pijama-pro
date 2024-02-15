@@ -5,7 +5,7 @@
     <link rel="icon" href="../static/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
     <link rel="stylesheet" type="text/css" href="../static/css/table.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/selected-classes.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/selected-subjects.css">
 </head>
 <body>
 {% include 'widgets/header.html' %}
@@ -60,14 +60,14 @@
         </tbody>
     </table>
 </main>
-{% include 'widgets/selected-classes.html' %}
+{% include 'widgets/selected-subjects.html' %}
 {% include 'widgets/footer.html' %}
 <script src="../static/scripts/common.js"></script>
 <script src="../static/scripts/local-storage.js"></script>
 <script src="../static/scripts/select.js"></script>
 <script src="../static/scripts/table.js"></script>
 <script>
-    loadSelectedClasses();
+    loadSelectedSubjects();
     loadIntoTable();
 </script>
 </body>
