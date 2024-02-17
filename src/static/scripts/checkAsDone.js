@@ -1,4 +1,4 @@
-function checkClassAsDone(disciplineData, disciplineBar) {
-    addOrRemoveConcludedClasses(disciplineData, disciplineBar);
-    showOrHideClasses();
+function checkSubjectAsDone(subjectData, subjectBar) {
+    addOrRemoveConcludedSubjects(subjectData, subjectBar);
+    showOrHideSubjects();
 }

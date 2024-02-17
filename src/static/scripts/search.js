@@ -1,23 +1,10 @@
-function searchInPijamas() {
-    let currentCourse = localStorage.getItem('currentCourse');
-    let currentSemester = localStorage.getItem('currentSemester');
-
-    if (currentCourse !== COURSE_INPUT.value || currentSemester !== SEMESTER_INPUT.value) {
-        localStorage.setItem('currentCourse', COURSE_INPUT.value);
-        localStorage.setItem('currentSemester', SEMESTER_INPUT.value);
-
-        fetchPijama();
-        reorder();
-    }
-}
-
 function filterByKeyword() {
-    const classes = document.getElementsByClassName('discipline-bar');
+    const subjects = document.getElementsByClassName('subject-bar');
 
-    Array.from(classes).forEach(classData => {
-        const textContent = classData.textContent.toLowerCase();
+    Array.from(subjects).forEach(subjectData => {
+        const textContent = subjectData.textContent.toLowerCase();
         const shouldDisplay = textContent.includes(SEARCH_INPUT.value.toLowerCase());
-        classData.style.display = shouldDisplay ? 'flex' : 'none';
+        subjectData.style.display = shouldDisplay ? 'flex' : 'none';
     });
 }
 

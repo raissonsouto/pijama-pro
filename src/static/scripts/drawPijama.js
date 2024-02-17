@@ -11,42 +11,42 @@ function fetchPijama() {
 }
 
 function drawPijama(json) {
-    let concludedClasses = localStorage.getItem('concludedClasses')
-    let concludedClassesArray = concludedClasses ? concludedClasses.split(SPLITTER) : []
+    let concludedSubjects = localStorage.getItem('concludedSubjects')
+    let concludedSubjectsArray = concludedSubjects ? concludedSubjects.split(SPLITTER) : []
     removeAllChildNodes(MAIN_DIV);
 
-    json.forEach(disciplina => {
-        let createdDiscipline = createDisciplineElement(disciplina)
+    json.forEach(subject => {
+        let createdSubject = createSubjectElement(subject)
 
         MAIN_DIV.appendChild(
-            createdDiscipline
+            createdSubject
         );
         
-        if (concludedClassesArray.includes(JSON.stringify(disciplina))){
-            createdDiscipline.classList.add('concluded-class');
+        if (concludedSubjectsArray.includes(JSON.stringify(subject))){
+            createdSubject.classList.add('concluded-subject');
         }
     });
-    showOrHideClasses();
+    showOrHideSubjects();
 }
 
-function showOrHideClasses() {
-    let classes = document.getElementsByClassName('discipline-bar'); 
-    for(let aula of classes){
-        for(let c of aula.classList){
-            if(c=='concluded-class'){
+function showOrHideSubjects() {
+    let subjects = document.getElementsByClassName('subject-bar'); 
+    for(let subject of subjects){
+        for(let c of subject.classList){
+            if(c=='concluded-subject'){
                 if(!SHOW_CONCLUDED.checked){
-                aula.style.display = 'none';
+                subject.style.display = 'none';
                 break;
                 }else{
-                    aula.style.display = '';
+                    subject.style.display = '';
                 }
-                aula.children[1].children[1].getElementsByTagName('label')[0].innerText = 'Não paguei';
-                aula.children[1].children[1].getElementsByTagName('label')[0].style['background-color'] = "#b00"; 
-                aula.children[1].children[0].style.display = 'none';
+                subject.children[1].children[1].getElementsByTagName('label')[0].innerText = 'Não paguei';
+                subject.children[1].children[1].getElementsByTagName('label')[0].style['background-color'] = "#b00"; 
+                subject.children[1].children[0].style.display = 'none';
             }else{
-                aula.children[1].children[1].getElementsByTagName('label')[0].innerText = 'Já paguei';
-                aula.children[1].children[1].getElementsByTagName('label')[0].style['background-color']= "#08f";
-                aula.children[1].children[0].style.display = '';
+                subject.children[1].children[1].getElementsByTagName('label')[0].innerText = 'Já paguei';
+                subject.children[1].children[1].getElementsByTagName('label')[0].style['background-color']= "#08f";
+                subject.children[1].children[0].style.display = '';
             }
         }
     }
@@ -55,58 +55,58 @@ function showOrHideClasses() {
 function removeAllChildNodes(parent) { 
     let children = parent.childNodes;
     Array.from(children).forEach(node => {
-        if (node.nodeType === 1 && node.classList.contains('discipline-bar')) {
+        if (node.nodeType === 1 && node.classList.contains('subject-bar')) {
             parent.removeChild(node);
         }
     });
 }
 
-function createDisciplineElement(disciplineData) {
-    const disciplineBar = document.createElement('div');
-    disciplineBar.classList.add('discipline-bar');
+function createSubjectElement(subjectData) {
+    const subjectBar = document.createElement('div');
+    subjectBar.classList.add('subject-bar');
 
-    const disciplineInfo = document.createElement('div');
-    disciplineInfo.classList.add('discipline-info');
+    const subjectInfo = document.createElement('div');
+    subjectInfo.classList.add('subject-info');
 
-    const classNameH2 = document.createElement('h2');
-    classNameH2.textContent = disciplineData.name;
+    const subjectNameH2 = document.createElement('h2');
+    subjectNameH2.textContent = subjectData.name;
 
     const professorParagraph = document.createElement('p');
-    professorParagraph.innerHTML = `<strong>Professor(a):</strong> ${disciplineData.professor}`;
+    professorParagraph.innerHTML = `<strong>Professor(a):</strong> ${subjectData.professor}`;
 
     const scheduleParagraph = document.createElement('p');
-    scheduleParagraph.innerHTML = `<strong>Horário:</strong> ${formatSchedule(disciplineData.schedule)}`;
+    scheduleParagraph.innerHTML = `<strong>Horário:</strong> ${formatSchedule(subjectData.schedule)}`;
 
     const vacanciesParagraph = document.createElement('p');
-    vacanciesParagraph.innerHTML = `<strong>Vagas ofertadas:</strong> ${disciplineData.vacancies}`;
+    vacanciesParagraph.innerHTML = `<strong>Vagas ofertadas:</strong> ${subjectData.vacancies}`;
 
-    const classActions = document.createElement('div');
-    classActions.classList.add('class-actions');
+    const subjectActions = document.createElement('div');
+    subjectActions.classList.add('subject-actions');
 
-    const selectClassButton = createCheckButton('Selecionar');
+    const selectSubjectButton = createCheckButton('Selecionar');
     const checkAsDone = createCheckButton('Já paguei');
     checkAsDone.classList.add('concluded-button');
 
-    selectClassButton.onclick = function() {
-        selectClass(JSON.stringify(disciplineData));
+    selectSubjectButton.onclick = function() {
+        selectSubject(JSON.stringify(subjectData));
     };
 
     checkAsDone.onclick = function() {
-        checkClassAsDone(JSON.stringify(disciplineData), disciplineBar);
+        checkSubjectAsDone(JSON.stringify(subjectData), subjectBar);
     } 
 
-    disciplineInfo.appendChild(classNameH2);
-    disciplineInfo.appendChild(professorParagraph);
-    disciplineInfo.appendChild(scheduleParagraph);
-    disciplineInfo.appendChild(vacanciesParagraph);
+    subjectInfo.appendChild(subjectNameH2);
+    subjectInfo.appendChild(professorParagraph);
+    subjectInfo.appendChild(scheduleParagraph);
+    subjectInfo.appendChild(vacanciesParagraph);
 
-    classActions.appendChild(selectClassButton);
-    classActions.appendChild(checkAsDone);
+    subjectActions.appendChild(selectSubjectButton);
+    subjectActions.appendChild(checkAsDone);
 
-    disciplineBar.appendChild(disciplineInfo);
-    disciplineBar.appendChild(classActions);
+    subjectBar.appendChild(subjectInfo);
+    subjectBar.appendChild(subjectActions);
 
-    return disciplineBar;
+    return subjectBar;
 }
 
 function createCheckButton(labelText, isChecked = false) {
