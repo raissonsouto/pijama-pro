@@ -80,10 +80,11 @@ button[type="submit"]:hover {
 #download-pijama {
     color: var(--primary-white);
     font-size: 13px;
-    padding: 5px 15px;
+    padding: 5px 15px 5px 10px;
 }
 
 .download-icon {
     vertical-align: middle;
     font-size: 14px;
+    margin-right: 5px;
 }
