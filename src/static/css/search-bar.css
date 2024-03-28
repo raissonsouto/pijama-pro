@@ -1,67 +1,90 @@
 .search-bar {
-  width: calc(100% - 20px);
-  justify-content: space-evenly;
-  align-items: center;
-  background-color: var(--secondary-white);
-  padding: 10px;
-  border-radius: var(--border-radius);
+    width: calc(100% - 20px);
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--secondary-white);
+    padding: 10px;
+    border-radius: var(--border-radius);
 }
 
 .search-bar div {
-  display: flex;
-  justify-content: space-evenly;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .search-input,
 .sort-select {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .search-input label,
 .sort-select label {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 .search-input input[type="text"],
 .sort-select select {
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 button[type="submit"] {
-  border: none;
-  background-color: #2196f3;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
+    border: none;
+    background-color: #2196f3;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 button[type="submit"]:hover {
-  background-color: #2156c3;
+    background-color: #2156c3;
 }
 
 
-.show-concluded input{
-  position: relative;
-  display: inline-block;
+.show-concluded input {
+    position: relative;
+    display: inline-block;
 }
-.show-concluded{
-  height: 20px;
-  display: inline-block;
-  border-radius: 3px;
-  padding: 5px;
-  top: 50px;
-  text-align: center;
-  margin-left: 10px;
-  align-content: center;
+
+.show-concluded {
+    height: 20px;
+    display: inline-block;
+    border-radius: 3px;
+    padding: 5px;
+    top: 50px;
+    text-align: center;
+    margin-left: 10px;
+    align-content: center;
 }
-.show-concluded p{
-  position: relative;
-  top: -10px;
-  margin-bottom: 3px;
-  text-align: justify;
-  font-size: 13px;
+
+.show-concluded p {
+    position: relative;
+    top: -10px;
+    margin-bottom: 3px;
+    text-align: justify;
+    font-size: 13px;
+}
+
+.download-pijama-div {
+    margin-top: 5px;
+    background-color: var(--primary-color);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    display: block;
+    text-align: center;
+}
+
+#download-pijama {
+    color: var(--primary-white);
+    font-size: 13px;
+    padding: 5px 15px 5px 10px;
+}
+
+.download-icon {
+    vertical-align: middle;
+    font-size: 14px;
+    margin-right: 5px;
 }

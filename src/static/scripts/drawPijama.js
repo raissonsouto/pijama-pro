@@ -2,11 +2,18 @@ function fetchPijama() {
     let course = localStorage.getItem('currentCourse');
     let semester = localStorage.getItem('currentSemester');
 
-    let url = `https://raw.githubusercontent.com/raissonsouto/pijama2json/main/jsons/${course}/${semester}.json`;
+    const baseUrl = "https://raw.githubusercontent.com/raissonsouto/pijama2json/main";
+    const jsonUrl = `${baseUrl}/jsons/${course}/${semester}.json`;
+    const pdfUrl = `${baseUrl}/pdfs/${course}/${semester}.pdf`;
+    const pdfFilename = `${course}-${semester}.pdf`
 
-    fetch(url)
+    fetch(jsonUrl)
         .then(response => response.json())
         .then(data => drawPijama(data))
+        .then(() => {
+            document.getElementById("download-pijama").setAttribute('href', pdfUrl);
+            document.getElementById("download-pijama").setAttribute('download', pdfFilename);
+        })
         .catch(error => alert("Não existe pijama nesse semestre para este curso"));
 }
 
