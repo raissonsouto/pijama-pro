@@ -90,6 +90,10 @@ function showOrHideConflictantSubjects(){
 
             subject.style.display = 'none';
 
+          }else{
+
+            subject.style.display = '';
+
           }
 
         }else{

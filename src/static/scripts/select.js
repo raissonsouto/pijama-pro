@@ -118,7 +118,7 @@ function unselectSubject(object) {
     }
 
     checkSubjectAvailiability();
-    showOrHideConflictantSubjects();
+    showOrHideSubjects();
 }
 
 function loadSelectedSubjects() {
