@@ -29,5 +29,5 @@ After installing Python, you can follow these steps to install the application:
 3. Create a virtual environment by running the command ```python -m venv venv```
 4. Activate the venv by running ```venv\Scripts\activate.ps1``` (Windows) or ```source venv/bin/activate``` (macOS or Linux)
 5. Install the required packages by running the command ```pip install -r requirements.txt```
-6. Run the command ```python app.py```.
+6. Run the command ```python src/app.py```.
 7. The application will be accessible in your web browser at [http://localhost:5000/](http://localhost:5000/).
