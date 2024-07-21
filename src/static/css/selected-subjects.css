@@ -12,6 +12,8 @@
     display: none;
 }
 
+
+
 #selected-subjects-box h2 {
     font-size: 12pt;
 }
@@ -20,6 +22,14 @@
     margin: 10px 0;
     padding: 5px;
     position: relative;
+}
+
+.selected-button label{
+    background-color: #0e3351;
+}
+
+.conflictant-button label{
+    background-color: #952806;
 }
 
 .selected-subject:hover {

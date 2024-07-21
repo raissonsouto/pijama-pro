@@ -18,6 +18,7 @@ function fetchPijama() {
 }
 
 function drawPijama(json) {
+
     let concludedSubjects = localStorage.getItem('concludedSubjects')
     let concludedSubjectsArray = concludedSubjects ? concludedSubjects.split(SPLITTER) : []
     removeAllChildNodes(MAIN_DIV);
@@ -33,31 +34,76 @@ function drawPijama(json) {
             createdSubject.classList.add('concluded-subject');
         }
     });
+    checkSubjectAvailiability();
     showOrHideSubjects();
 }
 
-function showOrHideSubjects() {
+function showOrHideConcludedSubjects(){
+
     let subjects = document.getElementsByClassName('subject-bar'); 
+
+    let concludedSubjects = localStorage.getItem('concludedSubjects');
+    let concludedSubjectsArray = concludedSubjects ? concludedSubjects.split(SPLITTER) : [];
+
     for(let subject of subjects){
-        for(let c of subject.classList){
-            if(c=='concluded-subject'){
-                if(!SHOW_CONCLUDED.checked){
-                subject.style.display = 'none';
-                break;
-                }else{
-                    subject.style.display = '';
-                }
-                subject.children[1].children[1].getElementsByTagName('label')[0].innerText = 'Não paguei';
-                subject.children[1].children[1].getElementsByTagName('label')[0].style['background-color'] = "#b00"; 
-                subject.children[1].children[0].style.display = 'none';
-            }else{
-                subject.children[1].children[1].getElementsByTagName('label')[0].innerText = 'Já paguei';
-                subject.children[1].children[1].getElementsByTagName('label')[0].style['background-color']= "#08f";
-                subject.children[1].children[0].style.display = '';
-            }
+        let metaData = subject.getElementsByTagName('meta')[0].content;
+        
+        let included = false;
+        let subjectName = JSON.parse(metaData)['name'];
+
+        if(concludedSubjectsArray.includes(metaData)){
+          included = true;
+          subject.children[2].children[1].getElementsByTagName('label')[0].innerText = 'Não paguei';
+          subject.children[2].children[1].getElementsByTagName('label')[0].style['background-color'] = "#b00"; 
+          subject.children[2].children[0].style.display = 'none';
+        }else{
+          subject.children[2].children[1].getElementsByTagName('label')[0].innerText = 'Já paguei';
+          subject.children[2].children[1].getElementsByTagName('label')[0].style['background-color']= "#08f";
+          subject.children[2].children[0].style.display = '';
+        }
+
+        if(included && !SHOW_CONCLUDED.checked){
+
+          subject.style.display = 'none';
+
+        }else{
+            subject.style.display = '';
+        }
+    }
+
+}
+
+function showOrHideSubjects() {
+  showOrHideConflictantSubjects();
+  showOrHideConcludedSubjects();
+
+}
+function showOrHideConflictantSubjects(){
+
+    let subjects = document.getElementsByClassName('subject-bar'); 
+
+    for(let subject of Array.from(subjects)){
+
+        if(!SHOW_CONFLICTANT.checked){
+
+          if(subject.classList.contains('conflictant-subject')){
+
+            subject.style.display = 'none';
+
+          }
+
+        }else{
+
+          if(subject.classList.contains('conflictant-subject')){
+
+            subject.style.display = '';
+
+          }
+
         }
     }
 }
+
 
 function removeAllChildNodes(parent) { 
     let children = parent.childNodes;
@@ -69,6 +115,10 @@ function removeAllChildNodes(parent) {
 }
 
 function createSubjectElement(subjectData) {
+  
+    const subjectMetaData = document.createElement('meta');
+    subjectMetaData.content = JSON.stringify(subjectData);
+
     const subjectBar = document.createElement('div');
     subjectBar.classList.add('subject-bar');
 
@@ -95,12 +145,14 @@ function createSubjectElement(subjectData) {
     checkAsDone.classList.add('concluded-button');
 
     selectSubjectButton.onclick = function() {
-        selectSubject(JSON.stringify(subjectData));
+        clickSelectButton(JSON.stringify(subjectData), subjectBar);
     };
 
     checkAsDone.onclick = function() {
         checkSubjectAsDone(JSON.stringify(subjectData), subjectBar);
     } 
+
+    subjectBar.appendChild(subjectMetaData);
 
     subjectInfo.appendChild(subjectNameH2);
     subjectInfo.appendChild(professorParagraph);

@@ -1,9 +1,9 @@
 function fetchPijamaMetadata() {
   const url = 'https://raw.githubusercontent.com/raissonsouto/pijama2json/main/jsons/metadata.json';
   fetch(url)
-        .then(response => response.json())
-        .then(data => setCoursesAtSearchBar(data))
-        .catch(error => alert('Pijama metadata not found!'));
+    .then(response => response.json())
+    .then(data => setCoursesAtSearchBar(data))
+    .catch(error => alert('Pijama metadata not found!'));
 }
 
 function setCoursesAtSearchBar(json) {
@@ -19,17 +19,17 @@ function setCoursesAtSearchBar(json) {
 
   let currentCourseInStorage = localStorage.getItem('currentCourse');
   json.forEach(course => {
-      var optionElement = document.createElement('option');
+    var optionElement = document.createElement('option');
 
-      optionElement.value = course['name'];
-      optionElement.textContent = course['title'];
+    optionElement.value = course['name'];
+    optionElement.textContent = course['title'];
 
-      COURSE_INPUT.appendChild(optionElement);
+    COURSE_INPUT.appendChild(optionElement);
 
-      if (optionElement.value == currentCourseInStorage) {
-        optionElement.selected = true;
-      }
+    if (optionElement.value == currentCourseInStorage) {
+      optionElement.selected = true;
     }
+  }
   );
 
   if (currentCourseInStorage == '') {
@@ -51,23 +51,23 @@ function setSemesterAtSearchBar(json) {
 
   let courseAvailableSemesters;
   json.forEach(course => {
-      if (course['name'] == COURSE_INPUT.value) {
-        courseAvailableSemesters = course['semesters'];
+    if (course['name'] == COURSE_INPUT.value) {
+      courseAvailableSemesters = course['semesters'];
 
-        course['semesters'].forEach(semester => {
-            var optionElement = document.createElement('option');
+      course['semesters'].forEach(semester => {
+        var optionElement = document.createElement('option');
 
-            optionElement.value = semester;
-            optionElement.textContent = semester;
+        optionElement.value = semester;
+        optionElement.textContent = semester;
 
-            SEMESTER_INPUT.appendChild(optionElement);
+        SEMESTER_INPUT.appendChild(optionElement);
 
-            if (optionElement.value == currentSemesterInStorage) {
-              optionElement.selected = true;
-            }
-          });
-      }
-    });
+        if (optionElement.value == currentSemesterInStorage) {
+          optionElement.selected = true;
+        }
+      });
+    }
+  });
 
   if (currentSemesterInStorage == '' || !courseAvailableSemesters.includes(currentSemesterInStorage)) {
     localStorage.setItem('currentSemester', SEMESTER_INPUT.value)

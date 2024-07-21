@@ -4,4 +4,5 @@ let SEMESTER_INPUT = document.getElementById('semester-dropdown');
 let SEARCH_INPUT = document.getElementById('search');
 let MAIN_DIV = document.getElementsByClassName('main')[0];
 let SHOW_CONCLUDED = document.getElementById('show-concluded');
+let SHOW_CONFLICTANT = document.getElementById('show-conflictant');
 let CONCLUDED_INPUT = document.getElementsByClassName('concluded-button');
